@@ -1,0 +1,31 @@
+org: kondaiah
+app: myfirstproject
+service: aws-python-project
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+
+plugins:
+  - serverless-offline
+
+functions:
+  word_frequency_handler:
+    handler: handler.word_frequency_handler
+    timeout: 30
+    events:
+      - http:
+          method: post
+          path: /v1/word_frequency_handler
+
+
+
+
+
+
+
+
+
+
