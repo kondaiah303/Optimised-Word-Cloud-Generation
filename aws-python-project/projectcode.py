@@ -24,7 +24,7 @@ def list_of_words_count(payload):
     words_list = []
     for words in tokenized_text:
         if words.isalpha():
-            words_list.append(words)
+            words_list.append(words.lower())
     py_objects = get_s3_objects()
     for word in words_list:
         if word in py_objects:
@@ -42,7 +42,6 @@ def list_of_words_count(payload):
         if frequency <= MAX_FREQUENCY_NUMBER:
             py_objects_max_frequency_number.update({i: j})
         frequency += 1
-    print(py_objects_max_frequency_number)
     return {"statusCode": 200, "body": json.dumps(py_objects_max_frequency_number)}
 
 
